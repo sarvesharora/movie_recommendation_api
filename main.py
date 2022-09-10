@@ -1,5 +1,5 @@
-import pickle 
-import pandas as pd
+# import pickle 
+# import pandas as pd
 from flask import Flask,make_response
 
 # movie_dict = pickle.load(open('movie_dict.pkl', 'rb'))

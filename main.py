@@ -39,7 +39,7 @@ def hello_world():
 def recommend_movies(moviename):
     arr = recommend(moviename)
     return make_response(
-        arr,
+        moviename,
         200,
     )
 

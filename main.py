@@ -38,8 +38,9 @@ def hello_world():
 @app.route("/movie/<moviename>")
 def recommend_movies(moviename):
     arr = recommend(moviename)
+    ans = " ".join(arr)
     return make_response(
-        moviename,
+        ans,
         200,
     )
 

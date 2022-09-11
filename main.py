@@ -8,7 +8,7 @@ similarity = pickle.load(open('similarity.pkl', 'rb'))
 
 def recommenda(movie_id):
     if(len(movies[movies["movie_id"] == movie_id]) == 0):
-        return []
+        return tuple([])
         
     movie_index = movies[movies["movie_id"] == movie_id].index[0]
     distances = similarity[movie_index]
@@ -16,7 +16,7 @@ def recommenda(movie_id):
     arr = []
     for i in movie_list:
         arr.append(str(movies.iloc[i[0]].movie_id))
-    return arr
+    return tuple(arr)
 
 def recommend(movie):
     print(movies)
@@ -26,7 +26,7 @@ def recommend(movie):
     arr = []
     for i in movie_list:
         arr.append(movies.iloc[i[0]].title)
-    return arr
+    return tuple(arr)
 
 
 app = Flask(__name__)
@@ -38,9 +38,8 @@ def hello_world():
 @app.route("/movie/<moviename>")
 def recommend_movies(moviename):
     arr = recommend(moviename)
-    ans = " ".join(arr)
     return make_response(
-        ans,
+        arr,
         200,
     )
 
